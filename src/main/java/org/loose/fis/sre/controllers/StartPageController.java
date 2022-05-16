@@ -22,4 +22,12 @@ public class StartPageController {
         stage.setTitle("Events App");
         stage.show();
     }
+    public void openLoginForm(javafx.event.ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
+        Stage stage2 = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene2 = new Scene(root);
+        stage2.setScene(scene2);
+        stage2.setTitle("Events App");
+        stage2.show();
+    }
 }

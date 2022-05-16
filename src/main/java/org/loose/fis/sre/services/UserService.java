@@ -2,6 +2,7 @@ package org.loose.fis.sre.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.loose.fis.sre.exceptions.InvalidUserCredentialsException;
 import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
 import org.loose.fis.sre.model.User;
 
@@ -13,6 +14,16 @@ import java.util.Objects;
 import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
 
 public class UserService {
+
+    private static ObjectRepository<User> userRepository;
+
+    public static void initDatabase() {
+        Nitrite database = Nitrite.builder()
+                .filePath(getPathToFile("Events_App.db").toFile())
+                .openOrCreate("test", "test");
+
+        userRepository = database.getRepository(User.class);
+    }
 
     public static void addUser(String username, String password, String role) throws UsernameAlreadyExistsException {
         checkUserDoesNotAlreadyExist(username);
@@ -28,6 +39,24 @@ public class UserService {
         return new String(hashedPassword, StandardCharsets.UTF_8)
                 .replace("\"", ""); //to be able to save in JSON format
     }
+
+    public static void checkAccount(String username,String password) throws InvalidUserCredentialsException{
+        int ok=0;
+        for (User user : userRepository.find()) {
+            if (Objects.equals(username, user.getUsername()) && Objects.equals(encodePassword(username, password),user.getPassword()))
+            {ok=1;}
+        }
+        if(ok==0) throw new InvalidUserCredentialsException(username);
+    }
+
+    public static String checkRole(String username){
+        for (User user : userRepository.find()) {
+            if (Objects.equals(username, user.getUsername()))
+                return user.getRole();
+        }
+        return "";
+    }
+
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
         for (User user : userRepository.find()) {
             if (Objects.equals(username, user.getUsername()))
