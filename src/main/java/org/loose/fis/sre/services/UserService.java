@@ -49,6 +49,14 @@ public class UserService {
         if(ok==0) throw new InvalidUserCredentialsException(username);
     }
 
+    public static String checkRole(String username){
+        for (User user : userRepository.find()) {
+            if (Objects.equals(username, user.getUsername()))
+                return user.getRole();
+        }
+        return "";
+    }
+
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
         for (User user : userRepository.find()) {
             if (Objects.equals(username, user.getUsername()))

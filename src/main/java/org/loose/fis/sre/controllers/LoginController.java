@@ -52,7 +52,7 @@ public class LoginController {
     public void LoginAction(javafx.event.ActionEvent actionEvent) throws IOException {
         try{
             UserService.checkAccount(usernameTxt.getText(),passwordTxt.getText());
-            if ("user".equals(UserService.checkRole(usernameTxt.getText()))) {
+            if ("User".equals(UserService.checkRole(usernameTxt.getText()))) {
                 openUserMainPage(actionEvent);
             }
             else openManagerMainPage(actionEvent);
