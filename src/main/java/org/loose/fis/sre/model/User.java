@@ -7,16 +7,34 @@ public class User {
     private String username;
     private String password;
     private String role;
+    private Event [] events = new Event[10];
+    private int contor;
 
     public User(String username, String password, String role) {
         this.username = username;
         this.password = password;
         this.role = role;
+        contor = 0;
     }
 
     public User() {
+        contor = 0;
     }
 
+    public Event[] getEvents() {
+        if (contor==0) {
+            return null;
+        }else{
+            return events;
+        }
+    }
+    public void addEvent(Event e){
+        events[contor] = e;
+        contor++;
+    }
+    public int getContor() {
+        return contor;
+    }
     public String getUsername() {
         return username;
     }

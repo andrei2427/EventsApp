@@ -24,7 +24,9 @@ public class UserService {
 
         userRepository = database.getRepository(User.class);
     }
-
+    public static ObjectRepository<User> getDatabase(){
+        return userRepository;
+    }
     public static void addUser(String username, String password, String role) throws UsernameAlreadyExistsException {
         checkUserDoesNotAlreadyExist(username);
         userRepository.insert(new User(username, encodePassword(username, password), role));
