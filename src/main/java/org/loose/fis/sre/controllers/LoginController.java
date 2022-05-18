@@ -11,6 +11,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.loose.fis.sre.exceptions.InvalidUserCredentialsException;
+import org.loose.fis.sre.model.User;
 import org.loose.fis.sre.services.UserService;
 
 import java.io.IOException;

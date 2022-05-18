@@ -16,6 +16,8 @@ import org.loose.fis.sre.model.Event;
 import org.loose.fis.sre.model.User;
 import org.loose.fis.sre.services.UserService;
 
+import java.util.Arrays;
+
 public class UserController {
     @FXML
     private Line l1;
@@ -55,9 +57,7 @@ public class UserController {
             if(user.getEvents()!=null){
                 Event[] events = user.getEvents();
                 int contor = user.getContor();
-                for(int i=0;i<contor;i++){
-                    records.add(events[i]);
-                }
+                records.addAll(Arrays.asList(events).subList(0, contor));
             }
         }
         records.add(new Event("articol","MH","22.02.2002",10));
@@ -73,6 +73,9 @@ public class UserController {
     }
     public void MakeReservation(){
         Event ev = Tabel.getSelectionModel().getSelectedItem();
+        if(UserService.currentUser!=null){
+            UserService.currentUser.addEvent(ev);
+        }
     }
 
 }
