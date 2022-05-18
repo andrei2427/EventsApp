@@ -29,7 +29,7 @@
             <Font name="Book Antiqua Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="Detailsbtn" layoutX="52.0" layoutY="287.0" mnemonicParsing="false" onAction="#getSelection" prefHeight="25.0" prefWidth="105.0" text="My Details">
+      <Button fx:id="Detailsbtn" layoutX="52.0" layoutY="287.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="My Details">
          <font>
             <Font name="Book Antiqua Bold" size="13.0" />
          </font>
@@ -52,5 +52,15 @@
             <Font size="16.0" />
          </font>
       </Label>
+      <Button fx:id="vse" layoutX="513.0" layoutY="439.0" mnemonicParsing="false" onAction="#getSelection" text="View selected event" textFill="#4223d9">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="mkrez" layoutX="223.0" layoutY="439.0" mnemonicParsing="false" onAction="#MakeReservation" text="Make reservation" textFill="#4223d9">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
