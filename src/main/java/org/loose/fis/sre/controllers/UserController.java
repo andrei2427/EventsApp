@@ -17,6 +17,8 @@ import org.loose.fis.sre.services.UserService;
 
 public class UserController {
     @FXML
+    private Label select;
+    @FXML
     private TableView<Event> Tabel;
     @FXML
     private TableColumn<Event, String> Data;
@@ -48,9 +50,15 @@ public class UserController {
                 }
             }
         }
-        //records.add(new Event("articol","MH","22.02.2002",10));
+        records.add(new Event("articol","MH","22.02.2002",10));
         Tabel.setItems(records);
         Tabel.setVisible(true);
+    }
+    @FXML
+    public void getSelection(){
+        Event ev = Tabel.getSelectionModel().getSelectedItem();
+        String txt = "Selected: " + ev.toString();
+        select.setText(txt);
     }
 
 }
