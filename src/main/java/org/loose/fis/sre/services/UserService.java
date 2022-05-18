@@ -16,7 +16,7 @@ import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
 public class UserService {
 
     private static ObjectRepository<User> userRepository;
-
+    public static User currentUser;
     public static void initDatabase() {
         Nitrite database = Nitrite.builder()
                 .filePath(getPathToFile("Events_App.db").toFile())
@@ -46,7 +46,8 @@ public class UserService {
         int ok=0;
         for (User user : userRepository.find()) {
             if (Objects.equals(username, user.getUsername()) && Objects.equals(encodePassword(username, password),user.getPassword()))
-            {ok=1;}
+            {   ok=1;
+                currentUser = user;}
         }
         if(ok==0) throw new InvalidUserCredentialsException(username);
     }

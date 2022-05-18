@@ -3,6 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane fx:id="panel" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.UserController">
@@ -29,7 +30,7 @@
             <Font name="Book Antiqua Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="Detailsbtn" layoutX="52.0" layoutY="287.0" mnemonicParsing="false" onAction="#getSelection" prefHeight="25.0" prefWidth="105.0" text="My Details">
+      <Button fx:id="Detailsbtn" layoutX="52.0" layoutY="287.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="My Details">
          <font>
             <Font name="Book Antiqua Bold" size="13.0" />
          </font>
@@ -52,5 +53,19 @@
             <Font size="16.0" />
          </font>
       </Label>
+      <Button fx:id="vse" layoutX="513.0" layoutY="439.0" mnemonicParsing="false" onAction="#getSelection" text="View selected event" textFill="#4223d9">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="mkrez" layoutX="223.0" layoutY="439.0" mnemonicParsing="false" onAction="#MakeReservation" text="Make reservation" textFill="#4223d9">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Line fx:id="l2" endX="-43.20001220703125" endY="-0.4000244140625" layoutX="453.0" layoutY="453.0" startX="-106.0" startY="-0.4000244140625" />
+      <Line fx:id="l4" endX="-50.399993896484375" layoutX="562.0" layoutY="452.0" startX="-107.992919921875" />
+      <Line fx:id="l1" endX="-106.0" endY="-44.600006103515625" layoutX="516.0" layoutY="471.0" startX="-105.70001220703125" startY="-17.9000244140625" />
+      <Line fx:id="l3" endX="-106.0" endY="-44.600006103515625" layoutX="559.0" layoutY="471.0" startX="-105.70001220703125" startY="-17.9000244140625" />
    </children>
 </AnchorPane>
