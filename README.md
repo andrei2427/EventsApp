@@ -1,9 +1,9 @@
-# Simple Registration Example
-A JavaFX Application demonstrating how to implement a simplistic approach of a registration use case using the following technologies:
-* [Java 15 or 16](https://www.oracle.com/java/technologies/javase-downloads.html)
+# Events Application
+A JavaFX Application  implementing a simplistic approach of a user/manager interaction using the following technologies:
+* [Java 17](https://www.oracle.com/java/technologies/javase-downloads.html)
 * [JavaFX](https://openjfx.io/openjfx-docs/) (as GUI)
-* [Maven](https://maven.apache.org/) / [Gradle](https://gradle.org/) (as build tools)
-* [Nitrite Java](https://www.dizitart.org/nitrite-database.html) (as Database)
+* [Gradle](https://gradle.org/) (as build tools)
+*  [Nitrite Java](https://www.dizitart.org/nitrite-database.html) (as Database)
 
 ## Prerequisites
 To be able to install and run this project, please make sure you have installed Java 11 or higher. Otherwise, the setup will note work!
@@ -25,7 +25,7 @@ To set up and run the project locally on your machine, please follow the next st
 ### Clone the repository
 Clone the repository using:
 ```git
-git clone https://github.com/fis2021/SimpleRegistrationExample
+git clone https://github.com/andrei2427/EventsApp.git
 ```
 
 ### Verify that the project Builds locally
@@ -59,24 +59,15 @@ To start and run the project use one of the following commands:
 
 To understand better how to set up a project using JavaFX 11+ and [Maven](https://openjfx.io/openjfx-docs/#maven) / [Gradle](https://openjfx.io/openjfx-docs/#gradle), please check the [official OpenJFX documentation](https://openjfx.io/).
 
-You should see an application starting, that looks like this:
-
-<img src="docs/Running.png" width="250"/>
 
 Try and register a user, for example admin, with the admin password. It will tell you, the user was registered successfully.
 
-<img src="docs/Registered.png" width="250"/>
-
-However, if you try to register a user with the same username again, you will see an error message:
-
-<img src="docs/AccountExists.png" width="250"/>
-
-**Make sure to close the SimpleRegistrationExample before trying to access the database, because the database only accepts one connection at a time!**
+**Make sure to close the EventsApp before trying to access the database, because the database only accepts one connection at a time!**
 
 ### What happened???
 
-Behind the scenes, the app actually saved the **admin** user in the database, encrypting the password. To see that it actually worked, we need to inspect the database that was created in the 
-`$HOME/.registration-example/registration-example.db` (for Linux and MacOS) and `%USERPROFILE%/.registration-example/registration-example.db` file, using the [nitrite-explorer-3.4.3.jar](https://github.com/nitrite/nitrite-java/releases/download/v3.4.3/nitrite-explorer-3.4.3.jar), provided by Nitrite Java.
+Behind the scenes, the app actually saved the **Manager** user in the database, encrypting the password. To see that it actually worked, we need to inspect the database that was created in the 
+`$HOME/.EventsApp/EventsApp.db` (for Linux and MacOS) and `%USERPROFILE%/.EventsApp/EventsApp.db` file, using the [nitrite-explorer-3.4.3.jar](https://github.com/nitrite/nitrite-java/releases/download/v3.4.3/nitrite-explorer-3.4.3.jar), provided by Nitrite Java.
 Download the jar and run `java --module-path $PATH_TO_FX --add-modules javafx.controls nitrite-explorer-3.4.3.jar
 `. You should see a window like this open:
 

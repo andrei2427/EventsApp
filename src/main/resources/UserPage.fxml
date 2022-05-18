@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="panel" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.UserController">
+   <children>
+      <Button fx:id="searchbtn" layoutX="50.0" layoutY="193.0" mnemonicParsing="false" onAction="#Search" prefHeight="25.0" prefWidth="105.0" text="Search Events">
+         <font>
+            <Font name="Book Antiqua Bold" size="13.0" />
+         </font></Button>
+      <Label layoutX="35.0" layoutY="125.0" text="User: " textFill="#2d9e38">
+         <font>
+            <Font name="Book Antiqua" size="27.0" />
+         </font></Label>
+      <Label fx:id="userTxt" layoutX="115.0" layoutY="125.0" textFill="#2d9e38">
+         <font>
+            <Font name="Book Antiqua" size="27.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imguser" fitHeight="100.0" fitWidth="133.33" layoutX="35.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@user.png" />
+         </image></ImageView>
+      <Button fx:id="Historybtn" layoutX="50.0" layoutY="237.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="My History">
+         <font>
+            <Font name="Book Antiqua Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="Detailsbtn" layoutX="52.0" layoutY="287.0" mnemonicParsing="false" onAction="#getSelection" prefHeight="25.0" prefWidth="105.0" text="My Details">
+         <font>
+            <Font name="Book Antiqua Bold" size="13.0" />
+         </font>
+      </Button>
+      <TableView fx:id="Tabel" layoutX="223.0" layoutY="160.0" prefHeight="266.0" prefWidth="430.0">
+        <columns>
+          <TableColumn fx:id="Name" prefWidth="163.20001220703125" text="Name" />
+          <TableColumn fx:id="Place" prefWidth="102.39996337890625" text="Place" />
+            <TableColumn fx:id="Data" prefWidth="113.60000610351562" text="Data" />
+            <TableColumn fx:id="NOT" prefWidth="49.60003662109375" text="N.O.T." />
+        </columns>
+      </TableView>
+      <Label layoutX="499.0" layoutY="134.0" text="N.O.T--&gt; Number Of Tickets">
+         <font>
+            <Font name="Book Antiqua Bold Italic" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="select" layoutX="222.0" layoutY="30.0" prefHeight="49.0" prefWidth="446.0" textFill="#42e787">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
