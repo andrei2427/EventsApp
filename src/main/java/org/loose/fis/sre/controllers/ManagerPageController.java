@@ -1,2 +1,4 @@
-package org.loose.fis.sre.controllers;public class ManagerPageController {
+package org.loose.fis.sre.controllers;
+
+public class ManagerPageController {
 }
