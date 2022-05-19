@@ -30,6 +30,8 @@ public class UserController {
     @FXML
     private Label select;
     @FXML
+    private Label namelbl;
+    @FXML
     private TableView<Event> Tabel;
     @FXML
     private TableColumn<Event, String> Data;
@@ -48,6 +50,7 @@ public class UserController {
         Place.setCellValueFactory(new PropertyValueFactory<Event, String>("loc"));
         Data.setCellValueFactory(new PropertyValueFactory<Event, String>("data"));
         NOT.setCellValueFactory(new PropertyValueFactory<Event, Integer>("nrTickets"));
+        namelbl.setText(UserService.currentUser.getUsername());
     }
 
     public void Search(){
