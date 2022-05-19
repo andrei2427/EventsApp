@@ -53,5 +53,10 @@
             <TableColumn fx:id="NOT" minWidth="0.0" prefWidth="40.0" text="N.O.T." />
         </columns>
       </TableView>
+      <Button fx:id="lbtn" layoutX="608.0" layoutY="446.0" maxHeight="30.0" mnemonicParsing="false" onAction="#Logoff" prefHeight="20.0" prefWidth="73.0" text="Logoff">
+         <font>
+            <Font name="Book Antiqua Bold Italic" size="17.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

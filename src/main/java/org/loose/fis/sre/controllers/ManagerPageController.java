@@ -2,16 +2,23 @@ package org.loose.fis.sre.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.model.Event;
 import org.loose.fis.sre.model.User;
 import org.loose.fis.sre.services.UserService;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 public class ManagerPageController {
@@ -56,5 +63,13 @@ public class ManagerPageController {
         managerEvents.add(new Event("test","test","20.03.2008",1));
         Table.setItems(managerEvents);
         Table.setVisible(true);
+    }
+    public void Logoff(ActionEvent action) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
+        Stage stage = (Stage) ((Node) action.getSource()).getScene().getWindow();
+        Scene scene2 = new Scene(root);
+        stage.setScene(scene2);
+        stage.setTitle("Events App");
+        stage.show();
     }
 }
