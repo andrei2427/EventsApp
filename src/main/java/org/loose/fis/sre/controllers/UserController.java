@@ -52,8 +52,7 @@ public class UserController {
         NOT.setCellValueFactory(new PropertyValueFactory<Event, Integer>("nrTickets"));
         namelbl.setText(UserService.currentUser.getUsername());
     }
-
-    public void Search(){
+    public void SearchEvents{
     repository = UserService.getDatabase();
     ObservableList<Event> records= FXCollections.observableArrayList();
         for(User user : repository.find()){
