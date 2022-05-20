@@ -30,7 +30,7 @@
             <Font name="Book Antiqua Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="Detailsbtn" layoutX="52.0" layoutY="287.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="My Details">
+      <Button fx:id="Detailsbtn" layoutX="52.0" layoutY="287.0" mnemonicParsing="false" onAction="#searchName" prefHeight="25.0" prefWidth="105.0" text="Search">
          <font>
             <Font name="Book Antiqua Bold" size="13.0" />
          </font>
@@ -72,5 +72,6 @@
             <Font name="Book Antiqua" size="27.0" />
          </font>
       </Label>
+      <TextField fx:id="searchtxt" layoutX="14.0" layoutY="329.0" prefHeight="26.0" prefWidth="189.0" />
    </children>
 </AnchorPane>

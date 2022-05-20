@@ -52,7 +52,7 @@ public class UserController {
         NOT.setCellValueFactory(new PropertyValueFactory<Event, Integer>("nrTickets"));
         namelbl.setText(UserService.currentUser.getUsername());
     }
-    public void SearchEvents{
+    public void SearchEvents(){
     repository = UserService.getDatabase();
     ObservableList<Event> records= FXCollections.observableArrayList();
         for(User user : repository.find()){
@@ -79,5 +79,6 @@ public class UserController {
             UserService.currentUser.addEvent(ev);
         }
     }
-
+    public void searchName(){
+    }
 }
