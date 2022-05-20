@@ -54,5 +54,6 @@
             <Font name="Book Antiqua Bold Italic" size="17.0" />
          </font>
       </Button>
+      <ListView fx:id="list" layoutX="242.0" layoutY="125.0" prefHeight="300.0" prefWidth="438.0" />
    </children>
 </AnchorPane>
