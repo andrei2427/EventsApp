@@ -24,6 +24,7 @@ public class User {
     public void setEvents(Event[] ev){
         this.events = ev;
     }
+
     public Event[] getEvents() {
         if (contor==0) {
             return null;
@@ -38,9 +39,11 @@ public class User {
     public int getContor() {
         return contor;
     }
+
     public void setContor(int contor) {
         this.contor=contor;
     }
+
     public String getUsername() {
         return username;
     }

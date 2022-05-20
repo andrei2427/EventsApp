@@ -40,8 +40,13 @@ public class ManagerPageController {
 
     @FXML
     private Label namelbl;
+
     public ObservableList<Event> managerEvents= FXCollections.observableArrayList();
-    private static ObjectRepository<User> repository;
+
+    private static ObjectRepository<User> repository = UserService.getDatabase();
+
+    private User manager = UserService.currentUser;
+
     public void initialize(){
         Table.setVisible(false);
         Name.setCellValueFactory(new PropertyValueFactory<Event, String>("name"));
@@ -51,18 +56,20 @@ public class ManagerPageController {
         namelbl.setText(UserService.currentUser.getUsername());
     }
     public void SearchEvent(){
-        repository = UserService.getDatabase();
         managerEvents.clear();
-        for(User user : repository.find()){
-            if(user.getEvents()!=null){
-                Event[] events = user.getEvents();
-                int contor = user.getContor();
-                managerEvents.addAll(Arrays.asList(events).subList(0, contor));
+        if (manager.events != null) {
+            for( int i=0; i<manager.getContor();i++ ) {
+                {
+                    managerEvents.add(manager.events[i]);
+                }
             }
         }
-        managerEvents.add(new Event("test","test","20.03.2008",1));
+        managerEvents.add(new Event("test", "test", "20.03.2008", 1));
         Table.setItems(managerEvents);
         Table.setVisible(true);
+    }
+    public void History(){
+        System.out.println("Method work");
     }
     public void Logoff(ActionEvent action) throws IOException {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));

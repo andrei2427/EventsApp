@@ -21,6 +21,7 @@ public class Event {
     public void setRequest(int i){ this.request=i; }
 
     public int getRequest(){ return request; }
+
     public String getLoc() {
         return loc;
     }
