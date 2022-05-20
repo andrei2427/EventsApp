@@ -5,6 +5,7 @@ public class Event {
     private String loc;
     private String data;
     private Integer nrTickets;
+    private int request = 0;
 
     public Event(String name,String loc, String data, Integer nr){
         this. name = name;
@@ -12,11 +13,14 @@ public class Event {
         this. data = data;
         nrTickets =nr ;
     }
-
+    public Event(){}
     public String getData() {
         return data;
     }
 
+    public void setRequest(int i){ this.request=i; }
+
+    public int getRequest(){ return request; }
     public String getLoc() {
         return loc;
     }
@@ -30,6 +34,6 @@ public class Event {
     }
     @Override
     public String toString(){
-        return name + " | " + loc + " | " + data;
+        return "   " + name + "   |   " + loc + "   |   " + data + "   |   " + nrTickets;
     }
 }

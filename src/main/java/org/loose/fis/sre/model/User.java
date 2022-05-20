@@ -7,7 +7,7 @@ public class User {
     private String username;
     private String password;
     private String role;
-    private Event [] events = new Event[10];
+    public Event [] events = new Event[10];
     private int contor;
 
     public User(String username, String password, String role) {
@@ -21,6 +21,9 @@ public class User {
         contor = 0;
     }
 
+    public void setEvents(Event[] ev){
+        this.events = ev;
+    }
     public Event[] getEvents() {
         if (contor==0) {
             return null;
@@ -34,6 +37,9 @@ public class User {
     }
     public int getContor() {
         return contor;
+    }
+    public void setContor(int contor) {
+        this.contor=contor;
     }
     public String getUsername() {
         return username;
