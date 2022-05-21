@@ -77,8 +77,6 @@ public class UserController {
             }
           }
         }
-        records.add(new Event("articol12","MH","22.02.2002",10));
-        records.add(new Event("articol245","MH","22.02.2002",10));
         Tabel.setItems(records);
         Tabel.setVisible(true);
         l1.setVisible(true);l2.setVisible(true);l3.setVisible(true);l4.setVisible(true);
@@ -111,6 +109,7 @@ public class UserController {
         repository.remove(U);
         repository.insert(buf);
         U=buf;
+        UserService.currentUser = U;
     }
     public void History(){
         listView.getItems().clear();

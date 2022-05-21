@@ -61,11 +61,12 @@ public class ManagerPageController {
         namelbl.setText(UserService.currentUser.getUsername());
     }
     public void SearchEvent(ActionEvent a)throws IOException{
-        managerEvents.clear();
+
         if(add!=null){
             add(a);
             SearchEvent(a);
         }
+        managerEvents.clear();
         if (manager.events != null) {
             for( int i=0; i<manager.getContor();i++ ) {
                 {
@@ -73,7 +74,6 @@ public class ManagerPageController {
                 }
             }
         }
-        //managerEvents.add(new Event("test", "test", "20.03.2008", 1));
         Table.setItems(managerEvents);
         Table.setVisible(true);
         list.setVisible(false);
@@ -81,25 +81,29 @@ public class ManagerPageController {
     public void History(){
         reservations.clear();
         list.getItems().clear();
+        int k=0;
         for(User user: repository.find()){
             if ("User".equals(user.getRole())){
-                for(int i=0; i< manager.getContor();i++){
-                    for(int j=0; j<user.getContor();j++){
-                        if(manager.events[i].getName()!=null){
-                            if(manager.events[i].getName().equals(user.events[j].getName())){
-                                reservations.add(new EnhancedEvent(user.events[i],user.getUsername()));
+                for(int i=0; i < manager.getContor();i++){
+                    if(user.getContor() !=0){
+                        for(int j=0; j<user.getContor();j++){
+                            if(manager.events[i].getName()!=null){
+                                if(manager.events[i].getName().equals(user.events[j].getName())){
+                                    k++;
+                                    String show = "  < " + k + " >  " + user.getUsername();
+                                    show = show + " --->  " +user.events[j].toString();
+                                    list.getItems().add(show);
+                                }
                             }
                         }
                     }
                 }
             }
         }
-        for(int k=0; k< reservations.size();k++){
+        /*for(int k=0; k< reservations.size();k++){
             String show = "  < " + (k+1) + " >  " + reservations.get(k).toString() ;
             list.getItems().add(show);
-        }
-        String show = "  < 1 > aaa  --->  articol    |    MH    |    22.02.2022";
-        list.getItems().add(show);
+        }*/
         list.setVisible(true);
     }
     public void doSearch(){
