@@ -99,11 +99,7 @@ public class ManagerPageController {
                     }
                 }
             }
-        }
-        /*for(int k=0; k< reservations.size();k++){
-            String show = "  < " + (k+1) + " >  " + reservations.get(k).toString() ;
-            list.getItems().add(show);
-        }*/
+         }
         list.setVisible(true);
     }
     public void doSearch(){
