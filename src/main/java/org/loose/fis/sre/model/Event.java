@@ -54,6 +54,6 @@ public class Event {
     }
     @Override
     public String toString(){
-        return "   " + name + "   |   " + loc + "   |   " + data + "   |   " + nrTickets;
+        return " " + name + "    |    " + loc + "    |    " + data + "    |    " + nrTickets;
     }
 }

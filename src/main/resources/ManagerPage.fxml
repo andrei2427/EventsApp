@@ -31,7 +31,7 @@
             <Font name="Book Antiqua Bold Italic" size="16.0" />
          </font>
       </Button>
-      <Button layoutX="42.0" layoutY="250.0" mnemonicParsing="false" onAction="#History" prefHeight="31.0" prefWidth="114.0" text="My History">
+      <Button layoutX="42.0" layoutY="250.0" mnemonicParsing="false" onAction="#History" prefHeight="31.0" prefWidth="114.0" text="Reservations">
          <font>
             <Font name="Book Antiqua Bold Italic" size="16.0" />
          </font>
