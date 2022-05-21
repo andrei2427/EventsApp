@@ -7,8 +7,8 @@ public class User {
     private String username;
     private String password;
     private String role;
-    public Event [] events = new Event[10];
-    private int contor;
+    public Event [] events = new Event[20];
+    private int contor=0;
 
     public User(String username, String password, String role) {
         this.username = username;
@@ -19,6 +19,14 @@ public class User {
 
     public User() {
         contor = 0;
+    }
+
+    public User(User aux) {
+        this.username = aux.getUsername();
+        this.password = aux.getPassword();
+        this.role = aux.getRole();
+        this.contor = aux.getContor();
+        this.events = aux.events;
     }
 
     public void setEvents(Event[] ev){
@@ -33,8 +41,8 @@ public class User {
         }
     }
     public void addEvent(Event e){
-        events[contor] = e;
-        contor++;
+        events[this.contor] = e;
+        this.contor++;
     }
     public int getContor() {
         return contor;

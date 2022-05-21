@@ -14,6 +14,25 @@ public class Event {
         nrTickets =nr ;
     }
     public Event(){}
+    public boolean isEmpty(){
+        if (name == null || loc == null || data == null || nrTickets == null){return true;}
+            else return false;
+    }
+    public Event(Event e){
+        this.name  = e.getName();
+        this. loc  = e.getLoc();
+        this. data = e.getData();
+        nrTickets  = e.getNrTickets();
+    }
+
+    public void setName(String n){ this.name = n;}
+
+    public void setPlace(String l){this.loc = l;}
+
+    public void setDate(String d){this.data = d;}
+
+    public void setNOT(Integer nr){this.nrTickets = nr;}
+
     public String getData() {
         return data;
     }

@@ -15,9 +15,10 @@ repositories {
     mavenCentral()
 }
 
+
 group = 'org.loose.fis'
 version = '0.0.1-SNAPSHOT'
-description = 'A simple registration example using Java 15+, JavaFX, Maven / Gradle and saving users in Nitrite Java (with encoded passwords).'
+description = 'Simple Events Application'
 
 sourceCompatibility = 17
 targetCompatibility = 17
@@ -27,6 +28,7 @@ dependencies {
     implementation 'org.openjfx:javafx-fxml:18' //15.0.1
     implementation 'org.dizitart:nitrite:3.4.4'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.2.2'
+
 }
 
 mainClassName = 'org.loose.fis.sre.Main'
