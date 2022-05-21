@@ -62,10 +62,10 @@ public class ManagerPageController {
     }
     public void SearchEvent(ActionEvent a)throws IOException{
         managerEvents.clear();
-        /*if(add!=null){
+        if(add!=null){
             add(a);
             SearchEvent(a);
-        }*/
+        }
         if (manager.events != null) {
             for( int i=0; i<manager.getContor();i++ ) {
                 {
@@ -154,7 +154,25 @@ public class ManagerPageController {
             System.out.println("merge add");
         }
     }
-   
+    public void add(ActionEvent event ) throws IOException{
+        if(add ==null){
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("AddEvent.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        addd();}
+        if(add != null){
+            User usera = new User(manager);
+            usera.addEvent(add);
+            repository.remove(manager);
+            repository.insert(usera);
+            manager = usera;
+            UserService.currentUser = usera;
+            System.out.println("merge add");
+            add =null;
+        }
+    }
     public void Logoff(ActionEvent action) throws IOException {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         Stage stage = (Stage) ((Node) action.getSource()).getScene().getWindow();
