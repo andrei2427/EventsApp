@@ -98,7 +98,7 @@ public class ManagerPageController {
             String show = "  < " + (k+1) + " >  " + reservations.get(k).toString() ;
             list.getItems().add(show);
         }
-        String show = "  < 1 > aaa  --->  articol    |    MH    |    22.02.2022";
+        //String show = "  < 1 > aaa  --->  articol    |    MH    |    22.02.2022";
         list.getItems().add(show);
         list.setVisible(true);
     }
