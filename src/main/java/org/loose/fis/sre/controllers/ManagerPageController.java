@@ -8,10 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.dizitart.no2.objects.ObjectRepository;
@@ -24,7 +21,8 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class ManagerPageController {
-
+    @FXML
+    private TextField srctxt;
     @FXML
     private TableColumn<Event, String> Date;
 
@@ -50,8 +48,9 @@ public class ManagerPageController {
 
     private static ObjectRepository<User> repository = UserService.getDatabase();
 
-    private User manager = UserService.currentUser;
-
+    private static User manager = UserService.currentUser;
+    public static Event edit;
+    public static Event add =null;
     public void initialize(){
         Table.setVisible(false);
         list.setVisible(false);
@@ -61,8 +60,12 @@ public class ManagerPageController {
         NOT.setCellValueFactory(new PropertyValueFactory<Event, Integer>("nrTickets"));
         namelbl.setText(UserService.currentUser.getUsername());
     }
-    public void SearchEvent(){
+    public void SearchEvent(ActionEvent a)throws IOException{
         managerEvents.clear();
+        /*if(add!=null){
+            add(a);
+            SearchEvent(a);
+        }*/
         if (manager.events != null) {
             for( int i=0; i<manager.getContor();i++ ) {
                 {
@@ -70,19 +73,22 @@ public class ManagerPageController {
                 }
             }
         }
-        managerEvents.add(new Event("test", "test", "20.03.2008", 1));
+        //managerEvents.add(new Event("test", "test", "20.03.2008", 1));
         Table.setItems(managerEvents);
         Table.setVisible(true);
         list.setVisible(false);
     }
     public void History(){
         reservations.clear();
+        list.getItems().clear();
         for(User user: repository.find()){
             if ("User".equals(user.getRole())){
                 for(int i=0; i< manager.getContor();i++){
                     for(int j=0; j<user.getContor();j++){
-                        if(manager.events[i].getName().equals(user.events[j].getName())){
-                            reservations.add(new EnhancedEvent(user.events[i],user.getUsername()));
+                        if(manager.events[i].getName()!=null){
+                            if(manager.events[i].getName().equals(user.events[j].getName())){
+                                reservations.add(new EnhancedEvent(user.events[i],user.getUsername()));
+                            }
                         }
                     }
                 }
@@ -95,8 +101,60 @@ public class ManagerPageController {
         String show = "  < 1 > aaa  --->  articol    |    MH    |    22.02.2022";
         list.getItems().add(show);
         list.setVisible(true);
-        System.out.println("Method work");
     }
+    public void doSearch(){
+        Table.setVisible(true);
+        list.setVisible(false);
+        String search = srctxt.getText();
+        Table.getItems().stream()
+                .filter(item -> search.equals(item.getName()))
+                .findAny()
+                .ifPresent(item -> {
+                    Table.getSelectionModel().select(item);
+                    Table.scrollTo(item);
+                });
+    }
+    public void Edit(ActionEvent event) throws IOException{
+        Table.setVisible(true);
+        list.setVisible(false);
+        Event ev = Table.getSelectionModel().getSelectedItem();
+        if(ev!=null){
+            edit = new Event(ev);
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("EditEvent.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+            User user = new User(manager);
+            for(int i=0;i<manager.getContor();i++){
+                if( edit != null ){
+                    if(user.events[i].getName()!=null){
+                        if(user.events[i].getName().equals(edit.getName())) {
+                            user.events[i]=edit;
+                        }
+                    }
+                }
+            }
+            repository.remove(manager);
+            repository.insert(user);
+            manager = user;
+            UserService.currentUser = user;
+        }
+    }
+    public void addd() {
+
+        if(add != null){
+            User usera = new User(manager);
+            usera.addEvent(add);
+            repository.remove(manager);
+            repository.insert(usera);
+            manager = usera;
+            UserService.currentUser = usera;
+            System.out.println("merge add");
+        }
+    }
+   
     public void Logoff(ActionEvent action) throws IOException {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
         Stage stage = (Stage) ((Node) action.getSource()).getScene().getWindow();
